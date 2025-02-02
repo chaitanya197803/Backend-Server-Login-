@@ -1,10 +1,10 @@
-const Joi = require('joi');
+const Joi = require('Joi');
 
 const signupValidation = (req, res, next) => {
-    const schema = join.object({
-        name: joi.string().min(3).max(100).required(),
-        email: joi.string().email().required(),
-        name: joi.string().min(4).max(100).required()
+    const schema = Joi.object({
+        name: Joi.string().min(3).max(100).required(),
+        email: Joi.string().email().required(),
+        name: Joi.string().min(4).max(100).required()
     });
     const { error } = schema.validate(req.body);
     if(error){
@@ -13,11 +13,10 @@ const signupValidation = (req, res, next) => {
     }
     next(); 
 }
-
 const loginValidation = (req, res, next) => {
-    const schema = join.object({
-        email: joi.string().email().required(),
-        name: joi.string().min(4).max(100).required()
+    const schema = Joi.object({
+        email: Joi.string().email().required(),
+        name: Joi.string().min(4).max(100).required()
     });
     const { error } = schema.validate(req.body);
     if(error){
